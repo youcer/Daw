@@ -1,0 +1,101 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="https://kit.fontawesome.com/908b002f45.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<title>our project</title>
+<style>
+    th{ 
+        color:#fff;
+            }
+</style>
+<body>
+<div class="menu-bar">
+  <ul>
+    <li><a href="how to use/index.html"><i class="far fa-question-circle"></i>    How To Use</a></li>
+    <li ><a href="index.html"><i class="fas fa-home"></i>   Home</a></li>
+      <li ><a href="slidebox/index.html"><i class="fas fa-microchip"></i>     hardware</a></li>
+        <li ><a href="software/index.html"><i class="fab fa-microsoft"></i>     software</a></li>
+        <li ><a href="/shopping/index.php"><i class="fas fa-cart-arrow-down"></i>    Shopping</a></li>
+        <li><a href="#"><i class="fas fa-share-alt-square"></i>      Contact</a>
+          <div class="sub-menu-1">
+  <ul>
+ <li><a href="https://www.facebook.com/MBK-gaming-107088527704715"><i class="fab fa-facebook-f blue"></i></a></li>
+<li><a href="#"><i class="fab fa-twitter-square twit"></i></a></li>
+<li><a href="https://www.youtube.com/channel/UCIijBPCNFp71F7kcjjEo5gQ"><i class="fab fa-youtube-square red"></i></a></li>
+    </ul>
+    </li>
+    <li><a href="ar/index.html">عربي</a></li>
+    <li><img src="mbk.png" style="margin-top: -20px;"></li>
+    <audio controls autoplay loop><source src="musique/shine on.mp3" type="audio/mp3"></audio>
+          </div>
+
+          <div class=" menu-bar search">
+<div class="row">
+    <div class="col">
+        <div class="card card-body">
+            <img src="search.png">
+            <input id="search-input" class="form-control" type="text" value="type Here! ">
+        </div>
+    </div>
+</div>
+<table class="table table-striped">
+    <tr  class="bg-info">
+        <th  class="bg-info" data-colname="name" data-order="desc">Produit</th>
+        <th  data-colname="Q" data-order="desc">Q</th>
+        <th  data-colname="Prix" data-order="desc">Prix</th>
+    </tr>
+    <tbody id="myTable">
+        
+    </tbody>
+</table>
+
+
+<script>
+var myArray = [
+    {'name':'intel i5 9400f', 'Q':'10', 'Prix':'24000 DA'},
+    {'name':'intel i5 10400f', 'Q':'10', 'Prix':'34000 DA'},
+    {'name':'intel i3 9100f', 'Q':'10', 'Prix':'15200 DA'},
+    {'name':'intel i3 10100f', 'Q':'10', 'Prix':'25000 DA'},
+    {'name':'amd ryzen 3400g', 'Q':'10', 'Prix':'26000 DA'},
+    {'name':'amd ryzen 3200g', 'Q':'10', 'Prix':'16000 DA'},
+    {'name':'GTX 1650 ph', 'Q':'10', 'Prix':'31500 DA'},
+    {'name':'GTX 1660 ph', 'Q':'10', 'Prix':'47000 DA'},
+    {'name':'GTX 1660 super', 'Q':'10', 'Prix':'65000 DA'},
+]
+$('#search-input').on('keyup',function(){
+    var value = $(this).val()
+    console.log('value:', value)
+    var data = searchTable(value, myArray)
+    buildTable(data)
+})
+
+buildTable(myArray)
+
+function searchTable(value, data){
+    var filtredData = []
+    for (var i = 0; i < data.length; i++){
+        value = value.toLowerCase()
+        var name = data[i].name.toLowerCase()
+        if (name.includes(value)){
+            filtredData.push(data[i])
+        }
+    }
+    return filtredData
+}  
+
+
+function buildTable(data){
+    var table = document.getElementById('myTable')
+    table.innerHTML = ''
+    for (var i = 0; i < data.length; i++){
+        var row = `<tr>
+                        <td>${data[i].name}</td>
+                        <td>${data[i].Q}</td>
+                        <td>${data[i].Prix}</td>
+                   </tr>`
+        table.innerHTML += row
+    }
+}
+</script>
+</div>
+</body>

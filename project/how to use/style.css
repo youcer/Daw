@@ -1,0 +1,14 @@
+*
+{
+padding: 0;
+margin: 0;
+}
+body
+{
+background-image: url(template.jpg);
+background-size: cover;
+background-position: top;
+box-sizing: border-box;
+font-family: sans-serif;
+font-size:20px;
+}
